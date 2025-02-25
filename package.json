@@ -17,6 +17,7 @@
     "chart.js": "^4.4.8",
     "cra-template": "1.2.0",
     "framer-motion": "^10.18.0",
+    "gh-pages": "^6.3.0",
     "gsap": "^3.12.7",
     "js-cookie": "^3.0.5",
     "lottie-react": "^2.4.1",
@@ -36,6 +37,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "server": "json-server --watch db.json --port 5000"
   },
   "eslintConfig": {
