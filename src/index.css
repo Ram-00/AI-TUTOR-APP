@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.button:hover {
+    background-color: #ff4081; /* Change to your desired color */
+    transition: background-color 0.3s ease;
+}
+
+.card {
+    background-color: #1e1e1e; /* Card background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    color: #ffcc00; /* Highlight color for headings */
+}
+
+h4 {
+    color: #f7dba7ff; /* Heading color */
+}
+
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hover-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+a {
+    color: #a27035ff; /* Golden Brown for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #f7dba7ff; /* Peach Yellow on hover */
+}
+
+/* From Uiverse.io by RiccardoRapelli */ 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch #input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2196f3;
+  transition: 0.4s;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sun-moon {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: yellow;
+  transition: 0.4s;
+}
+
+#input:checked + .slider {
+  background-color: black;
+}
+
+#input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+#input:checked + .slider .sun-moon {
+  transform: translateX(26px);
+  background-color: white;
+  animation: rotate-center 0.6s ease-in-out both;
+}
+
+.moon-dot {
+  opacity: 0;
+  transition: 0.4s;
+}
+
+#input:checked + .slider .sun-moon .moon-dot {
+  opacity: 1;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round .sun-moon {
+  border-radius: 50%;
+}
+
+/* Additional styles for the toggle button */
+#moon-dot-1, #moon-dot-2, #moon-dot-3, #light-ray-1, #light-ray-2, #light-ray-3, 
+.cloud-light, .cloud-dark, .star {
+  position: absolute;
+}
+
+@keyframes cloud-move {
+  0% { transform: translateX(0px); }
+  40% { transform: translateX(4px); }
+  80% { transform: translateX(-4px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes star-twinkle {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.2); }
+  80% { transform: scale(0.8); }
+  100% { transform: scale(1); }
+}
+
+main {
+    margin-top: 20px;
+}
+
+.AppBar {
+    background-color: #003366; /* Dark blue background */
+}
+
+.Toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.IconButton {
+    margin-left: 10px;
+    transition: color 0.3s ease;
+}
+
+.IconButton:hover {
+    color: #f7dba7ff; /* Change color on hover */
+}
+
+.TextField {
+    margin-right: 20px;
+    background-color: #fff; /* White background for search */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.floating-header {
+    background: linear-gradient(90deg, #003366, #006699); /* School-themed gradient */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+.floating-header:hover {
+    transform: translateY(-5px); /* Slight upward movement */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.school-icon {
+    color: #f7dba7ff; /* Light color for the school icon */
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 10px;
+    }
+
+    .floating-header {
+        font-size: 14px;
+    }
+}
+
+.hero {
+    background: linear-gradient(90deg, #003366, #006699);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.service-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.footer {
+    background-color: #003366;
+    padding: 20px;
+    text-align: center;
+}
+
+.Button {
+    margin-left: 20px; /* Space between buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+.Button:hover {
+    background-color: #00509e; /* Lighter blue on hover */
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.MuiContainer-root {
+  background-color: #f5f7fa !important;
+}

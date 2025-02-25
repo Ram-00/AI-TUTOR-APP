@@ -1,0 +1,151 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "faculty@sanghamitra.edu",
+      "password": "password123",
+      "role": "faculty",
+      "firstName": "John",
+      "lastName": "Doe",
+      "department": "Computer Science",
+      "employeeId": "FAC001",
+      "subjects": ["Programming", "Data Structures", "Algorithms"],
+      "joinDate": "2023-01-01"
+    },
+    {
+      "id": 2,
+      "username": "student@sanghamitra.edu",
+      "password": "student123",
+      "role": "student",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "rollNumber": "STU001",
+      "class": "10",
+      "section": "A",
+      "joinDate": "2023-06-15"
+    }
+  ],
+  "assignments": [
+    {
+      "id": 1,
+      "title": "Math Homework",
+      "description": "Complete exercises from Chapter 5",
+      "subject": "Mathematics",
+      "class": "10",
+      "section": "A",
+      "teacherId": 1,
+      "dueDate": "2024-03-20",
+      "status": "active",
+      "maxMarks": 100
+    },
+    {
+      "id": 2,
+      "title": "Science Project",
+      "description": "Research on Renewable Energy Sources",
+      "subject": "Science",
+      "class": "10",
+      "section": "A",
+      "teacherId": 1,
+      "dueDate": "2024-03-25",
+      "status": "active",
+      "maxMarks": 100
+    }
+  ],
+  "grades": [
+    {
+      "id": 1,
+      "studentId": 2,
+      "assignmentId": 1,
+      "subject": "Mathematics",
+      "grade": "A",
+      "marks": 92,
+      "feedback": "Excellent work on problem solving",
+      "submissionDate": "2024-03-18"
+    },
+    {
+      "id": 2,
+      "studentId": 2,
+      "assignmentId": 2,
+      "subject": "Science",
+      "grade": "B+",
+      "marks": 85,
+      "feedback": "Good research, needs better presentation",
+      "submissionDate": "2024-03-20"
+    }
+  ],
+  "classes": [
+    {
+      "id": 1,
+      "name": "10-A",
+      "subject": "Mathematics",
+      "teacherId": 1,
+      "schedule": "Monday 9:00 AM",
+      "room": "Room 101",
+      "students": [2]
+    },
+    {
+      "id": 2,
+      "name": "10-A",
+      "subject": "Science",
+      "teacherId": 1,
+      "schedule": "Tuesday 10:00 AM",
+      "room": "Lab 201",
+      "students": [2]
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 2,
+      "type": "assignment",
+      "title": "New Assignment Added",
+      "message": "Math Homework due on March 20",
+      "date": "2024-03-15",
+      "read": false
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "type": "submission",
+      "title": "New Submission",
+      "message": "Jane Smith submitted Math Homework",
+      "date": "2024-03-18",
+      "read": false
+    }
+  ],
+  "attendance": [
+    {
+      "id": 1,
+      "classId": 1,
+      "date": "2024-03-15",
+      "present": [2],
+      "absent": []
+    },
+    {
+      "id": 2,
+      "classId": 2,
+      "date": "2024-03-16",
+      "present": [2],
+      "absent": []
+    }
+  ],
+  "lessonPlans": [
+    {
+      "id": 1,
+      "teacherId": 1,
+      "subject": "Mathematics",
+      "class": "10-A",
+      "topic": "Quadratic Equations",
+      "date": "2024-03-20",
+      "objectives": [
+        "Understand the basic concept of quadratic equations",
+        "Learn different methods of solving quadratic equations"
+      ],
+      "resources": [
+        "Textbook Chapter 4",
+        "Online practice problems"
+      ],
+      "status": "pending"
+    }
+  ]
+}
