@@ -9,7 +9,6 @@ import {
     Grid,
     IconButton,
     Divider,
-    Tooltip,
     Badge,
     Alert,
     Snackbar,
@@ -24,40 +23,31 @@ import {
     Person,
     Email,
     Phone,
-    School,
     Class,
-    LocationOn,
     CalendarToday,
     Badge as BadgeIcon,
     Groups,
     Home,
-    Book
 } from '@mui/icons-material';
 
 const StudentProfile = () => {
-    const [profileData, setProfileData] = useState({
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john.doe@example.com',
-        phone: '+91 9876543210',
-        class: 'X',
-        section: 'A',
-        rollNo: '2024001',
-        admissionNo: 'ADM2024001',
-        dateOfBirth: '2005-05-15',
-        bloodGroup: 'O+',
-        address: '123 Student Lane, Education City',
-        parentName: 'James Doe',
-        parentPhone: '+91 9876543211',
-        parentEmail: 'james.doe@example.com',
-        academicYear: '2023-2024',
-        house: 'Blue House',
-        achievements: ['Science Olympiad Winner', 'Class Representative']
-    });
-
     const [isEditing, setIsEditing] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
+    // eslint-disable-next-line no-unused-vars
+    const [profileData, setProfileData] = useState({
+        firstName: '',
+        lastName: '',
+        class: '',
+        section: '',
+        academicYear: '',
+        email: '',
+        phone: '',
+        address: '',
+        parentName: '',
+        parentPhone: '',
+        parentEmail: ''
+    });
 
     const handleImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {

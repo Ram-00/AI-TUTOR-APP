@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
     Box,
-    Container,
     Typography,
     Paper,
     FormControl,
@@ -15,7 +14,6 @@ import {
     Tab,
     List,
     ListItem,
-    ListItemText,
     Chip,
 } from '@mui/material';
 import {
@@ -25,9 +23,8 @@ import {
     Preview as PreviewIcon,
     Download as DownloadIcon,
 } from '@mui/icons-material';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
-import { useUser } from '../../../context/UserContext';
 import gsap from 'gsap';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -39,7 +36,6 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 
 const QuestionPaperGeneration = () => {
     const [currentTab, setCurrentTab] = useState('GENERATE');
-    const [searchQuery, setSearchQuery] = useState('');
     const [selectedClass, setSelectedClass] = useState('');
     const [selectedSubject, setSelectedSubject] = useState('');
     const [selectedExamType, setSelectedExamType] = useState('');
@@ -51,7 +47,6 @@ const QuestionPaperGeneration = () => {
     const searchBarRef = useRef(null);
     const tabsRef = useRef(null);
     const formRef = useRef(null);
-    const generateButtonRef = useRef(null);
 
     useEffect(() => {
         // Initial page load animation

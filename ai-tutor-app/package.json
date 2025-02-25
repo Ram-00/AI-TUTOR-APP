@@ -16,6 +16,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+
+  "homepage": "https://Ram-00.github.io/ai-tutor-app",
+
   "eslintConfig": {
     "extends": [
       "react-app",

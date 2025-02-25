@@ -10,10 +10,6 @@ import {
     InputLabel,
     Select,
     MenuItem,
-    Card,
-    IconButton,
-    Divider,
-    CardContent,
     List,
     ListItem,
     ListItemText,
@@ -21,12 +17,8 @@ import {
 import { styled } from '@mui/material/styles';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    School,
-    Book,
-    NoteAdd,
     Download,
     Save,
-    Edit,
 } from '@mui/icons-material';
 
 const PageContainer = styled(Box)(({ theme }) => ({
@@ -34,23 +26,6 @@ const PageContainer = styled(Box)(({ theme }) => ({
     backgroundColor: '#f5f7fa',
     minHeight: 'calc(100vh - 64px)', // Subtract header height
     marginTop: '64px', // Account for header
-}));
-
-const StyledCard = styled(Card)(({ theme }) => ({
-    height: '100%',
-    borderRadius: theme.spacing(2),
-    boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-    transition: 'transform 0.2s ease',
-    '&:hover': {
-        transform: 'translateY(-5px)',
-    },
-}));
-
-const SummarySection = styled(Box)(({ theme }) => ({
-    backgroundColor: '#f8fafc',
-    borderRadius: theme.spacing(2),
-    padding: theme.spacing(2),
-    marginTop: theme.spacing(2),
 }));
 
 const SelectionPanel = styled(Paper)(({ theme }) => ({

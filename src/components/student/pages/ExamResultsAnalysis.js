@@ -9,7 +9,6 @@ import {
     ListItemIcon, 
     ListItemText,
     Button,
-    Divider,
     Card,
     CardContent
 } from '@mui/material';
@@ -138,50 +137,6 @@ const ExamResultsAnalysis = () => {
     const { examId } = useParams();
     const navigate = useNavigate();
     const examData = resultData[examId];
-
-    // Enhanced chart options
-    const chartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            tooltip: {
-                mode: 'index',
-                intersect: false,
-            },
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                max: 100,
-                ticks: {
-                    callback: function(value) {
-                        return value + '%';
-                    }
-                }
-            }
-        }
-    };
-
-    // Transform data for the chart
-    const chartData = {
-        labels: examData.subjects.map(subject => subject.name),
-        datasets: [
-            {
-                label: 'Score',
-                data: examData.subjects.map(subject => subject.score),
-                backgroundColor: examData.subjects.map((_, index) => 
-                    `hsla(${index * 360 / examData.subjects.length}, 70%, 50%, 0.8)`
-                ),
-                borderColor: examData.subjects.map((_, index) => 
-                    `hsla(${index * 360 / examData.subjects.length}, 70%, 50%, 1)`
-                ),
-                borderWidth: 1
-            }
-        ]
-    };
 
     return (
         <motion.div

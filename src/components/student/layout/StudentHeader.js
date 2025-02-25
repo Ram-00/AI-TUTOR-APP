@@ -4,28 +4,18 @@ import {
     Toolbar,
     IconButton,
     Typography,
-    Box,
     Menu,
     MenuItem,
     Avatar,
-    ListItemIcon,
     ListItemText
 } from '@mui/material';
 import {
     Menu as MenuIcon,
-    Person as PersonIcon,
-    Settings as SettingsIcon,
-    HelpOutline as HelpIcon,
-    ExitToApp as LogoutIcon,
-    School as SchoolIcon,
-    AccountCircle,
-    Help,
-    Logout
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 import schoolLogo from '../../../images/school-logo1.png';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const StudentHeader = ({ drawerOpen, onDrawerToggle }) => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -114,21 +104,12 @@ const StudentHeader = ({ drawerOpen, onDrawerToggle }) => {
                     onClose={handleClose}
                 >
                     <MenuItem onClick={handleProfileClick}>
-                        <ListItemIcon>
-                            <AccountCircle fontSize="small" />
-                        </ListItemIcon>
                         <ListItemText>Profile</ListItemText>
                     </MenuItem>
                     <MenuItem onClick={handleHelpClick}>
-                        <ListItemIcon>
-                            <Help fontSize="small" />
-                        </ListItemIcon>
                         <ListItemText>Help & Support</ListItemText>
                     </MenuItem>
                     <MenuItem onClick={handleLogout}>
-                        <ListItemIcon>
-                            <Logout fontSize="small" />
-                        </ListItemIcon>
                         <ListItemText>Logout</ListItemText>
                     </MenuItem>
                 </Menu>

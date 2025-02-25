@@ -11,7 +11,6 @@ import {
     Select,
     MenuItem,
     Card,
-    IconButton,
     Divider,
     List,
     ListItem,
@@ -21,17 +20,13 @@ import {
 import { styled } from '@mui/material/styles';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    School,
-    Book,
     LightbulbOutlined,
     SaveAlt,
     Edit,
-    Add,
     PlayArrow,
     Quiz,
     LiveHelp,
 } from '@mui/icons-material';
-import { useUser } from '../../../context/UserContext';
 
 const PageWrapper = styled(Box)(({ theme }) => ({
     minHeight: '100vh',

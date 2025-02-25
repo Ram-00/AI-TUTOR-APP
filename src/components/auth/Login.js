@@ -1,182 +1,31 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
     Box,
-    Paper,
     Typography,
     TextField,
     Button,
-    Checkbox,
-    FormControlLabel,
-    ToggleButtonGroup,
-    ToggleButton,
     IconButton,
     InputAdornment,
     Link,
     Divider,
-    Card,
-    CardContent,
-    Container,
-    CircularProgress,
+    Avatar,
+    Snackbar,
     Alert,
     FormControl,
     InputLabel,
     Select,
-    MenuItem,
-    Avatar,
-    Snackbar
+    MenuItem
 } from '@mui/material';
 import {
     School as SchoolIcon,
-    Visibility,
-    VisibilityOff,
-    Person as PersonIcon,
-    Lock as LockIcon,
     Email as EmailIcon,
-    AccountBox as TeacherIcon,
 } from '@mui/icons-material';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { BackgroundElements } from '../animations/EducationalElements';
-import EducationalLoader from '../animations/EducationalLoader';
-import { Globe3D, DNA3D } from '../animations/EducationalElements';
 import { ParticleBackground } from '../animations/ParticleBackground';
-import { LoaderAnimation } from '../animations/LoaderAnimation';
 import '@fontsource/poppins';
-import AtomLoader from '../animations/AtomLoader';
-import schoolLogo from '../../images/school-logo1.png';
-
-const sketchElements = [
-    // Basic educational items
-    {
-        path: `
-            <g stroke="#ffffff" fill="none" stroke-width="1.5" style="stroke-linecap: round; stroke-linejoin: round">
-                <path d="M2,12 L7,2 L12,12 Z M4.5,7 L9.5,7" /> <!-- Pencil -->
-                <path d="M15,2 C17,2 19,4 19,6 C19,8 17,10 15,10 C13,10 11,8 11,6 C11,4 13,2 15,2" /> <!-- Apple -->
-                <path d="M15,10 L15,12" /> <!-- Apple stem -->
-            </g>
-        `,
-        width: 30,
-        position: { top: '10%', left: '15%' }
-    },
-    // Globe
-    {
-        path: `
-            <g stroke="#ffffff" fill="none" stroke-width="1.5">
-                <circle cx="12" cy="12" r="8" />
-                <path d="M12,4 C14.5,4 17,5 17,8 M12,4 C9.5,4 7,5 7,8" />
-                <path d="M12,20 C14.5,20 17,19 17,16 M12,20 C9.5,20 7,19 7,16" />
-                <path d="M4,12 L20,12" style="stroke-dasharray: 2,2" />
-            </g>
-        `,
-        width: 40,
-        position: { top: '20%', right: '25%' }
-    },
-    // Robot
-    {
-        path: `
-            <g stroke="#ffffff" fill="none" stroke-width="1.5">
-                <rect x="8" y="6" width="8" height="8" rx="1" />
-                <circle cx="10" cy="9" r="1" />
-                <circle cx="14" cy="9" r="1" />
-                <path d="M11,12 L13,12" />
-                <path d="M12,14 L12,17" />
-                <path d="M10,17 L14,17" />
-            </g>
-        `,
-        width: 35,
-        position: { bottom: '30%', right: '15%' }
-    },
-    // Music notes
-    {
-        path: `
-            <g stroke="#ffffff" fill="none" stroke-width="1.5">
-                <path d="M8,4 L8,13 C8,14.5 6.5,16 5,16 C3.5,16 2,14.5 2,13 C2,11.5 3.5,10 5,10 C6,10 7,10.5 8,11" />
-                <path d="M16,2 L16,11 C16,12.5 14.5,14 13,14 C11.5,14 10,12.5 10,11 C10,9.5 11.5,8 13,8 C14,8 15,8.5 16,9" />
-            </g>
-        `,
-        width: 25,
-        position: { top: '40%', left: '20%' }
-    },
-    // Test tubes
-    {
-        path: `
-            <g stroke="#ffffff" fill="none" stroke-width="1.5">
-                <path d="M8,2 L8,12 C8,14 6,16 4,16 M12,2 L12,14 C12,16 14,18 16,18" />
-                <path d="M6,6 L10,6 M10,10 L14,10" style="stroke-dasharray: 1,1" />
-            </g>
-        `,
-        width: 30,
-        position: { top: '60%', left: '30%' }
-    },
-    // Soccer ball
-    {
-        path: `
-            <g stroke="#ffffff" fill="none" stroke-width="1.5">
-                <circle cx="12" cy="12" r="8" />
-                <path d="M12,4 L12,20 M4,12 L20,12" />
-                <path d="M7,7 L17,17 M17,7 L7,17" style="stroke-dasharray: 2,2" />
-            </g>
-        `,
-        width: 35,
-        position: { bottom: '40%', right: '35%' }
-    }
-    // ... Add about 15-20 more elements with different positions
-];
-
-// Update the SketchedElements component to create multiple instances
-const SketchedElements = () => {
-    // Create multiple layers of elements with different scales and positions
-    const createLayer = (scale = 1, count = 20) => {
-        return Array.from({ length: count }, (_, index) => {
-            const element = sketchElements[index % sketchElements.length];
-            return (
-                <FloatingElement
-                    key={`layer-${scale}-${index}`}
-                    style={{
-                        position: 'absolute',
-                        left: `${Math.random() * 100}%`,
-                        top: `${Math.random() * 100}%`,
-                        width: element.width * scale,
-                        height: element.width * scale,
-                        opacity: 0.4 + (Math.random() * 0.3)
-                    }}
-                    animate={{
-                        y: [0, Math.random() * 30 - 15],
-                        x: [0, Math.random() * 30 - 15],
-                        rotate: [0, Math.random() * 40 - 20],
-                        scale: [1, 1.1, 1]
-                    }}
-                    transition={{
-                        duration: 3 + Math.random() * 4,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut"
-                    }}
-                >
-                    <svg
-                        width="100%"
-                        height="100%"
-                        viewBox="0 0 24 24"
-                        style={{
-                            filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.3))',
-                        }}
-                        dangerouslySetInnerHTML={{ __html: element.path }}
-                    />
-                </FloatingElement>
-            );
-        });
-    };
-
-    return (
-        <>
-            {createLayer(0.8, 25)} {/* Small background elements */}
-            {createLayer(1, 20)}   {/* Medium elements */}
-            {createLayer(1.2, 15)} {/* Larger foreground elements */}
-        </>
-    );
-};
 
 // Update LoginContainer styling
 const LoginContainer = styled(Box)(({ theme }) => ({
@@ -210,72 +59,6 @@ const LoginCard = styled(motion.div)(({ theme }) => ({
     position: 'relative',
     zIndex: 2,
 }));
-
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
-    width: '100%',
-    marginBottom: theme.spacing(3),
-    '& .MuiToggleButton-root': {
-        width: '50%',
-        padding: theme.spacing(1.5),
-        fontSize: '1rem',
-        textTransform: 'none',
-        '&.Mui-selected': {
-            backgroundColor: theme.palette.primary.main,
-            color: 'white',
-            '&:hover': {
-                backgroundColor: theme.palette.primary.dark,
-            },
-        },
-    },
-}));
-
-// Add new styled components for animated elements
-const FloatingElement = styled(motion.div)({
-    position: 'absolute',
-    pointerEvents: 'none',
-});
-
-const AnimatedLoader = styled(motion.div)({
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    zIndex: 1000,
-});
-
-const LoadingAnimation = () => (
-    <motion.div
-        style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'rgba(255,255,255,0.8)',
-            zIndex: 10,
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-    >
-        <motion.div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '20px',
-            }}
-        >
-            <EducationalLoader />
-            <Typography variant="h6" color="primary">
-                Logging you in...
-            </Typography>
-        </motion.div>
-    </motion.div>
-);
 
 // Update LogoContainer styling
 const LogoContainer = styled(Box)(({ theme }) => ({
@@ -493,26 +276,22 @@ const Login = () => {
                     </Box>
                 </LoginCard>
 
-                <AnimatePresence>
-                    {/* Placeholder for loading animation */}
-                </AnimatePresence>
-            </LoginContainer>
-
-            {/* Error Snackbar */}
-            <Snackbar 
-                open={!!error} 
-                autoHideDuration={6000} 
-                onClose={() => setError('')}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-            >
-                <Alert 
-                    onClose={() => setError('')} 
-                    severity="error" 
-                    sx={{ width: '100%' }}
+                {/* Error Snackbar */}
+                <Snackbar 
+                    open={!!error} 
+                    autoHideDuration={6000} 
+                    onClose={() => setError('')}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 >
-                    {error}
-                </Alert>
-            </Snackbar>
+                    <Alert 
+                        onClose={() => setError('')} 
+                        severity="error" 
+                        sx={{ width: '100%' }}
+                    >
+                        {error}
+                    </Alert>
+                </Snackbar>
+            </LoginContainer>
         </ThemeProvider>
     );
 };
@@ -818,37 +597,6 @@ const Educational3DElements = () => {
     </>
   );
 };
-
-// Animation Components
-const AtomAnimation = () => (
-    <motion.div
-        style={{
-            position: 'absolute',
-            left: '10%',
-            top: '25%',
-            width: '100px',
-            height: '100px',
-        }}
-        animate={{
-            rotate: 360,
-            scale: [1, 1.1, 1],
-        }}
-        transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "linear"
-        }}
-    >
-        <svg viewBox="0 0 100 100">
-            <motion.circle cx="50" cy="50" r="45" stroke="#1976d2" strokeWidth="2" fill="none" />
-            <motion.circle cx="50" cy="50" r="30" stroke="#1976d2" strokeWidth="2" fill="none"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.circle cx="50" cy="5" r="5" fill="#1976d2" />
-        </svg>
-    </motion.div>
-);
 
 // Create a custom theme
 const theme = createTheme({

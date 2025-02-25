@@ -8,7 +8,6 @@ import {
     CardActionArea,
     IconButton,
     Chip,
-    Button,
     TextField,
     InputAdornment
 } from '@mui/material';
@@ -17,9 +16,7 @@ import {
     MenuBook, 
     VideoLibrary, 
     Quiz, 
-    Science,
     Language,
-    Calculate,
     Search as SearchIcon,
     PlayCircleOutline,
     PictureAsPdf,

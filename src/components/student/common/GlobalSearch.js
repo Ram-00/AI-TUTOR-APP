@@ -7,11 +7,7 @@ import {
     List, 
     ListItem, 
     ListItemIcon, 
-    ListItemText,
-    Popper,
-    Fade,
-    Typography,
-    Tooltip
+    ListItemText
 } from '@mui/material';
 import { 
     Search as SearchIcon, 
@@ -20,12 +16,9 @@ import {
     MenuBook,
     Assessment,
     Dashboard,
-    AttachFile,
-    Image as ImageIcon,
-    PictureAsPdf,
-    Description
+    AttachFile
 } from '@mui/icons-material';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const searchSuggestions = {
@@ -54,12 +47,9 @@ const searchSuggestions = {
 const GlobalSearch = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
-    const [anchorEl, setAnchorEl] = useState(null);
     const [isExpanded, setIsExpanded] = useState(false);
     const [sidebarWidth, setSidebarWidth] = useState(240); // Default sidebar width
-    const fileInputRef = useRef(null);
     const navigate = useNavigate();
-    const location = useLocation();
     const searchContainerRef = useRef(null);
 
     // Track sidebar state and width
@@ -127,19 +117,8 @@ const GlobalSearch = () => {
                 }));
             
             setSuggestions(matchedSuggestions);
-            setAnchorEl(event.currentTarget);
         } else {
             setSuggestions([]);
-            setAnchorEl(null);
-        }
-    };
-
-    const handleFileUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            // Handle the file upload logic here
-            console.log('File selected:', file.name);
-            // You can add more file handling logic here
         }
     };
 
@@ -147,7 +126,6 @@ const GlobalSearch = () => {
         navigate(path);
         setSearchQuery('');
         setSuggestions([]);
-        setAnchorEl(null);
     };
 
     return (

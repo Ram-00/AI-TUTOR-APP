@@ -14,18 +14,14 @@ import {
     InputBase
 } from '@mui/material';
 import {
-    Save,
     ArrowBack,
-    Add,
     Comment,
     Undo,
     Redo,
     Draw,
     PanTool,
-    Grade,
     CheckCircle,
-    Search as SearchIcon,
-    FilterList
+    Search as SearchIcon
 } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
@@ -37,7 +33,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 const PaperEvaluation = () => {
     const [isEvaluating, setIsEvaluating] = useState(false);
     const [selectedPaper, setSelectedPaper] = useState(null);
-    const [searchQuery, setSearchQuery] = useState('');
     const [marks, setMarks] = useState(0);
     const [comments, setComments] = useState('');
 

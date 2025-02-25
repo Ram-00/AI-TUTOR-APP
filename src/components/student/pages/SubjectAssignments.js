@@ -17,24 +17,17 @@ import {
     ListItemText,
     Dialog,
     DialogTitle,
-    DialogContent,
-    DialogActions
+    DialogContent
 } from '@mui/material';
 import { 
     ExpandMore as ExpandMoreIcon,
     CloudUpload as UploadIcon,
-    Schedule as ScheduleIcon,
-    Description as DescriptionIcon,
     CheckCircle as CheckIcon,
     ArrowBack as ArrowBackIcon,
     Delete as DeleteIcon,
     PictureAsPdf as PdfIcon,
     Visibility as VisibilityIcon
 } from '@mui/icons-material';
-import { Worker, Viewer } from '@react-pdf-viewer/core';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
-import '@react-pdf-viewer/core/lib/styles/index.css';
-import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -45,7 +38,6 @@ const SubjectAssignments = () => {
     const [uploadStates, setUploadStates] = useState({});
     const [previewUrl, setPreviewUrl] = useState(null);
     const [showPreview, setShowPreview] = useState(false);
-    const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
     // Mock data with actual PDF URLs
     const subjectData = {

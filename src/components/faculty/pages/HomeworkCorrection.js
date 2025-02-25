@@ -32,22 +32,8 @@ import {
     PendingActions,
     Class,
     Sort,
-    Download,
-    Star,
     CalendarToday,
 } from '@mui/icons-material';
-import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    PieChart,
-    Pie,
-    Cell,
-} from 'recharts';
 
 // Debug mounting
 console.log("HomeworkCorrection component is mounting");
@@ -87,7 +73,6 @@ const HomeworkCorrection = () => {
     const [filterAnchorEl, setFilterAnchorEl] = useState(null);
     const [selectedTab, setSelectedTab] = useState(0);
     const [gradeDialogOpen, setGradeDialogOpen] = useState(false);
-    const [selectedHomework, setSelectedHomework] = useState(null);
     const [tempScore, setTempScore] = useState(0);
     const [tempFeedback, setTempFeedback] = useState('');
     const [criteriaScores, setCriteriaScores] = useState({});
